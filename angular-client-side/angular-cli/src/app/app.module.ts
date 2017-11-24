@@ -11,7 +11,8 @@ import { ImageCollectionsComponent } from './image-collections/image-collections
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'image-collections', component: ImageCollectionsComponent}
 ];
 @NgModule({
   declarations: [

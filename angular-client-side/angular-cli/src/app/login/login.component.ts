@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   }
   onResponse(res: string) {
     this.response = res;
+    console.log(this.response);
   }
 
 }
