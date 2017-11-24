@@ -74,6 +74,7 @@ router.route('/collections')
         collection.rating = req.body.rating;
         collection.numOfRatings = req.body.numOfRatings;
         collection.creator = req.body.creator;
+        collection.priv = req.body.priv;
         collection.save(function(err){
             if(err)
                 res.send(err);
@@ -96,6 +97,7 @@ router.route('/collections/:collection_id')
             collection.rating = req.body.rating;
             collection.numOfRatings = req.body.numOfRatings;
             collection.creator = req.body.creator;
+            collection.priv = req.body.priv;
             collection.save(function(err){
                 if(err)
                     res.send(err);
