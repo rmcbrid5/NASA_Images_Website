@@ -1,0 +1,14 @@
+<h3>Add a Collection</h3>
+<form style>
+    <input type=text #name placeholder="Collection Name"><br><br>
+    <input type=text #description placeholder="Collection Description"><br><br>
+    <input type=checkbox #priv value="public">
+    <label for = "priv">Make Public?</label><br><br>
+    <button type=submit (click)="newCollection()">Submit Collection</button>
+</form>
+<br>
+<hr>
+<h3>My Collections</h3>
+<ul>
+    <li *ngFor = "let collection of collections">{{collection}}</li>
+</ul>

@@ -7,19 +7,24 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
-import { ImageCollectionsComponent } from './image-collections/image-collections.component'
+import { ImageCollectionsComponent } from './image-collections/image-collections.component';
+import { ImageCollectionService } from './image-collection.service';
+import { MycollectionsComponent } from './mycollections/mycollections.component';
+import { MycollectionsService } from './mycollections.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'image-collections', component: ImageCollectionsComponent}
+  { path: 'image-collections', component: ImageCollectionsComponent },
+  { path: 'mycollections', component: MycollectionsComponent }
 ];
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ImageCollectionsComponent
+    ImageCollectionsComponent,
+    MycollectionsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [LoginService],
+  providers: [LoginService, ImageCollectionService, MycollectionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

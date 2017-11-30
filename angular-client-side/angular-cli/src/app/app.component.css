@@ -6,3 +6,12 @@ a {
 a:hover{
     color: grey;
 }
+button{
+    border: none;
+    background-color: white;
+    font-weight: bold;
+    padding-left: 5vw;
+}
+button:hover{
+    color: grey;
+}

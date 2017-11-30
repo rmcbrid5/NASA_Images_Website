@@ -13,10 +13,23 @@ var Image = require('./app/models/images');
 var Collection = require('./app/models/imageCollection');
 var User = require('./app/models/User');
 var port = 8081;
+var router = express.Router();
+router.use(function (req, res, next) {
 
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Pass to next layer of middleware
+    next();
+});
 //ROUTES
 //=============================================
-var router = express.Router();
 
 router.route('/users')
     .post(function(req, res){
@@ -71,6 +84,7 @@ router.route('/collections')
     .post(function(req, res){
         var collection = new Collection();
         collection.name = req.body.name;
+        collection.descrip = req.body.descrip;
         collection.rating = req.body.rating;
         collection.numOfRatings = req.body.numOfRatings;
         collection.creator = req.body.creator;
@@ -94,6 +108,7 @@ router.route('/collections/:collection_id')
             if(err)
                 res.send(err);
             collection.name = req.body.name;
+            collection.description = req.body.description;
             collection.rating = req.body.rating;
             collection.numOfRatings = req.body.numOfRatings;
             collection.creator = req.body.creator;

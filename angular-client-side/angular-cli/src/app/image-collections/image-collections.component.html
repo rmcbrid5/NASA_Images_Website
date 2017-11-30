@@ -1,3 +1,4 @@
-<p>
-  image-collections works!
-</p>
+<h3>Image Collections</h3>
+<ul>
+    <li *ngFor = "let collection of collections">{{collection}}     <button type="button" (click)="onRating(this._id)">Rate</button>     <button type="button" (click)="viewCollection()">View</button></li>
+</ul>

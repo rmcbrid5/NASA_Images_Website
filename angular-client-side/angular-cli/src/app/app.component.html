@@ -1,13 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to NASA Image Site!
+    Welcome to NASA Image Site!<br>
   </h1><hr>
 </div>
 <div>
   <a routerLink="/home" routerLinkActive="active">Home</a>
   <a routerLink="/login" routerLinkActive="active">Login/Register</a>
   <a routerLink="/image-collections" routerLinkActive="active">Image Collections</a>
+  <a routerLink="/mycollections" routerLinkActive="active">My Collections</a>
+  <button type="button" (click)="onLogout()">Logout</button>
 </div><hr>
 <router-outlet></router-outlet>
 

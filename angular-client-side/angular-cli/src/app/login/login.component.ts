@@ -6,19 +6,36 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  response = ''
-  constructor(private loginservice: LoginService) { }
+  response = '';
+  first;
+  last;
+  email;
+  password;
+  admin;
+  constructor(private loginservice: LoginService) {
+  }
   onLogin(){
-    this.loginservice.getData(this.onResponse.bind(this));
+    this.email = document.getElementById('email')['value'];
+    this.password = document.getElementById('password')['value'];
+    this.loginservice.getData(this.onResponse.bind(this), this.email, this.password);
+    return false;
   }
   onRegister(){
-    this.loginservice.postData(this.onResponse.bind(this));
+    this.first=document.getElementById('fname')['value'];
+    this.last=document.getElementById('lname')['value'];
+    this.email=document.getElementById('mail')['value'];
+    this.password=document.getElementById('pword')['value'];
+    this.admin=false;
+    this.loginservice.postData(this.onResponse.bind(this), this.first, this.last, this.email, this.password, this.admin);
+    return false;
   }
   ngOnInit() {
   }
-  onResponse(res: string) {
+  onResponse(res) {
+    if(res==null){
+      alert("Invalid Login");
+    }
     this.response = res;
-    console.log(this.response);
+    return false;
   }
-
 }
