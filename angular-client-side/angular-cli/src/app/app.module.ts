@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'image-collections', component: ImageCollectionsComponent },
-  { path: 'mycollections', component: MycollectionsComponent }
+  { path: 'mycollections', component: MycollectionsComponent },
+  { path: 'search', component: SearchComponent }
 ];
 @NgModule({
   declarations: [
