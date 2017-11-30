@@ -26,16 +26,26 @@ export class LoginComponent implements OnInit {
     this.email=document.getElementById('mail')['value'];
     this.password=document.getElementById('pword')['value'];
     this.admin=false;
-    this.loginservice.postData(this.onResponse.bind(this), this.first, this.last, this.email, this.password, this.admin);
+    this.loginservice.postData(this.onRegisterResponse.bind(this), this.first, this.last, this.email, this.password, this.admin);
     return false;
   }
   ngOnInit() {
   }
   onResponse(res) {
-    if(res==null){
-      alert("Invalid Login");
-    }
     this.response = res;
     return false;
+  }
+  onRegisterResponse(res){
+    if(res=="no"){
+      alert("Invalid Password");
+    }
+    else{
+      this.first=document.getElementById('fname')['value'];
+      this.last=document.getElementById('lname')['value'];
+      this.email=document.getElementById('mail')['value'];
+      this.password=document.getElementById('pword')['value'];
+      this.admin=false;
+      
+    }
   }
 }
