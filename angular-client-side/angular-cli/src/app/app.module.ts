@@ -11,6 +11,7 @@ import { ImageCollectionsComponent } from './image-collections/image-collections
 import { ImageCollectionService } from './image-collection.service';
 import { MycollectionsComponent } from './mycollections/mycollections.component';
 import { MycollectionsService } from './mycollections.service';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     HomeComponent,
     LoginComponent,
     ImageCollectionsComponent,
-    MycollectionsComponent
+    MycollectionsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
