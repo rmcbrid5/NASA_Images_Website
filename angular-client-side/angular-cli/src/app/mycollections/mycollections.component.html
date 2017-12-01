@@ -1,11 +1,11 @@
 <h3>Add a Collection</h3>
-<form style>
-    <input type=text #name placeholder="Collection Name"><br><br>
-    <input type=text #description placeholder="Collection Description"><br><br>
-    <input type=checkbox #priv value="public">
+<!--<form style>-->
+    <input type=text id="name" placeholder="Collection Name"><br><br>
+    <input type=text id="description" placeholder="Collection Description"><br><br>
+    <input type=checkbox id="priv" value="public">
     <label for = "priv">Make Public?</label><br><br>
-    <button type=submit (click)="newCollection()">Submit Collection</button>
-</form>
+    <button (click)="newCollection()">Submit Collection</button>
+<!--</form>-->
 <br>
 <hr>
 <h3>My Collections</h3>

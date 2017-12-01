@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ import { ImageCollectionService } from './image-collection.service';
 import { MycollectionsComponent } from './mycollections/mycollections.component';
 import { MycollectionsService } from './mycollections.service';
 import { SearchComponent } from './search/search.component';
+import { SearchService } from './search.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
     SearchComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(
@@ -37,7 +40,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [LoginService, ImageCollectionService, MycollectionsService],
+  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

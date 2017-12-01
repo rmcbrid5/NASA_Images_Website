@@ -13,7 +13,7 @@ export class MycollectionsComponent implements OnInit {
   descripCollect;
   userid;
   constructor(private myCollectService:MycollectionsService) { 
-    //this.collections = this.myCollectService.getData(this.onResponse.bind(this));
+    this.collections = this.myCollectService.getData(this.onResponse.bind(this));
   }
   onResponse(res:string){
     this.collections = res;

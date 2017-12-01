@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 
 @Component({
@@ -12,11 +12,18 @@ export class AppComponent{
   userfName = localStorage.getItem('currentUsername');
   userID = localStorage.getItem('currentUserID');
   status = localStorage.getItem('loggedIn');
+  constructor(private router:Router)
+  {
+    this.router.navigate(['home']);
+  }
   onLogout(){
-    localStorage.setItem('currentUserID', '');
+    alert(this.status);
+    localStorage.setItem('currentUserID', null);
     this.userfName=localStorage.getItem('currentUserID');
-    localStorage.setItem('currentUsername', '');
+    localStorage.setItem('currentUsername', null);
     this.userID = localStorage.getItem('currentUserID');
     localStorage.setItem('loggedIn', 'false');
+    alert("Logged Out" + localStorage.getItem('loggedIn'));
+    return false;
   }
 }

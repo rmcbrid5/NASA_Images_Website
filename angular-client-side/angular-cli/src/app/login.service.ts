@@ -13,7 +13,8 @@ export class LoginService {
             alert("Logged In!");
             localStorage.setItem('currentUsername', data[i].firstName);
             localStorage.setItem('currentUserID', data[i]._id);
-            localStorage.setItem('loggedIn', "true");
+            localStorage.setItem('loggedIn', 'true');
+            console.log(localStorage.getItem('loggedIn'));
             log = "in";
           }
           if(data[i].email==email){

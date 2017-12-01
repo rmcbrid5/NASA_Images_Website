@@ -1,4 +1,10 @@
 <h3>Search NASA Images</h3>
 <br><br>
-<input type="text" placeholder="Keyword">
+<input type="text" id = "key" placeholder="Keyword">
 <input type="submit" value = "Search" (click)="onSearch()">
+<ul>
+    <li *ngFor="let ref of refs | paginate: { itemsPerPage: 10, currentPage: p }">
+        <img [src]="ref" style="width: 100px; height: 100px">
+    </li>
+</ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
