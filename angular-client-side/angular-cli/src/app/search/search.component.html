@@ -5,6 +5,10 @@
 <ul>
     <li *ngFor="let ref of refs | paginate: { itemsPerPage: 10, currentPage: p }">
         <img [src]="ref" style="width: 100px; height: 100px">
+        <select [id]="ref">
+            <option *ngFor="let imageCollect of imageCollects" [value]="imageCollect._id">{{imageCollect.name}}</option>
+        </select>
+        <button (click)="addImage(ref)">Add to Collection</button>
     </li>
 </ul>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

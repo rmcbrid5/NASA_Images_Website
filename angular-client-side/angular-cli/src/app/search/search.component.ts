@@ -7,7 +7,11 @@ import { SearchService } from '../search.service';
 })
 export class SearchComponent implements OnInit {
   refs = [];
-  constructor(private searchService: SearchService) { }
+  imageCollects = [];
+  constructor(private searchService: SearchService) {
+    let user = localStorage.getItem('currentUserID');
+    this.searchService.getData(this.onGetResponse.bind(this), user);
+  }
 
   ngOnInit() {
   }
@@ -17,5 +21,20 @@ export class SearchComponent implements OnInit {
   }
   onResponse(res){
     this.refs=res;
+  }
+  
+  onGetResponse(res){
+    this.imageCollects = res;
+    console.log(this.imageCollects);
+    return false;
+  }
+  
+  addImage(ref){
+    let collectionID=document.getElementById(ref)['value'];
+    this.searchService.postData(this.onPostResponse.bind(this), collectionID, ref);
+  }
+  
+  onPostResponse(res){
+    
   }
 }

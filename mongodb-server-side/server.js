@@ -132,7 +132,6 @@ router.route('/collections/:collection_id')
 router.route('/images')
     .post(function(req, res){
         var image = new Image();
-        image.name = req.body.name;
         image.imageURL = req.body.imageURL;
         image.imageCollection = req.body.imageCollection;
         image.save(function(err){
@@ -153,7 +152,6 @@ router.route('/images/:image_id')
         Image.findById(req.params.image_id, function(err, image){
             if(err)
                 res.send(err);
-            image.name = req.body.name;
             image.imageURL = req.body.imageURL;
             image.imageCollection = req.body.imageCollection;
             image.save(function(err){

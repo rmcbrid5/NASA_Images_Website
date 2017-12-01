@@ -24,7 +24,7 @@ export class MycollectionsService {
         descrip: d,
         priv: p,
         creator: i,
-        ratings: null,
+        ratings: 0,
         numOfRatings: 0
     };
     this.http.post('/api/collections', body).subscribe();
