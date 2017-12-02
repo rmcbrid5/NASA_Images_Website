@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../search.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -8,7 +9,11 @@ import { SearchService } from '../search.service';
 export class SearchComponent implements OnInit {
   refs = [];
   imageCollects = [];
-  constructor(private searchService: SearchService) {
+  constructor(private searchService: SearchService, private router:Router) {
+    if(localStorage.getItem('loggedIn')=='false'){
+      alert('Please log in to create and view collections');
+      this.router.navigate(['login']);
+    }
     let user = localStorage.getItem('currentUserID');
     this.searchService.getData(this.onGetResponse.bind(this), user);
   }

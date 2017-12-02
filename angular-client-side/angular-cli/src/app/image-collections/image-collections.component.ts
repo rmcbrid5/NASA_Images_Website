@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCollectionService } from '../image-collection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image-collections',
@@ -8,7 +9,7 @@ import { ImageCollectionService } from '../image-collection.service';
 })
 export class ImageCollectionsComponent implements OnInit {
   collections;
-  constructor(private imageCollectService: ImageCollectionService) { 
+  constructor(private imageCollectService: ImageCollectionService, private router:Router) { 
     this.collections = this.imageCollectService.getData(this.onResponse.bind(this));
   }
   onResponse(res:string){
@@ -17,6 +18,13 @@ export class ImageCollectionsComponent implements OnInit {
     return false;
   }
   ngOnInit() {
+  }
+  onRating(ID){
+    localStorage.setItem('currentCollectionID', ID);
+  }
+  viewCollection(ID){
+    localStorage.setItem('currentCollectionID', ID);
+    this.router.navigate(['view-images']);
   }
 
 }

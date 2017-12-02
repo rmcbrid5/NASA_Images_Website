@@ -17,6 +17,9 @@ import { SearchService } from './search.service';
 import { EditCollectionComponent } from './edit-collection/edit-collection.component';
 import { EditCollectionService } from './edit-collection.service';
 import { ViewImagesComponent } from './view-images/view-images.component';
+import { ViewImagesService } from './view-images.service';
+import { MyImagesComponent } from './my-images/my-images.component';
+import { MyImagesService } from './my-images.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,7 +27,9 @@ const appRoutes: Routes = [
   { path: 'image-collections', component: ImageCollectionsComponent },
   { path: 'mycollections', component: MycollectionsComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'edit-collections', component: EditCollectionComponent }
+  { path: 'edit-collections', component: EditCollectionComponent },
+  { path: 'view-images', component: ViewImagesComponent },
+  { path: 'my-images', component: MyImagesComponent }
 ];
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ const appRoutes: Routes = [
     MycollectionsComponent,
     SearchComponent,
     EditCollectionComponent,
-    ViewImagesComponent
+    ViewImagesComponent,
+    MyImagesComponent
   ],
   imports: [
     NgxPaginationModule,
@@ -46,7 +52,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService, EditCollectionService],
+  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService, EditCollectionService, ViewImagesService, MyImagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

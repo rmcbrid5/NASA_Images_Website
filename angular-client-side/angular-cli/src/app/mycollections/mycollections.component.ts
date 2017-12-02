@@ -45,5 +45,6 @@ export class MycollectionsComponent implements OnInit {
   }
   editImages(collectionID){
     localStorage.setItem('currentCollectionID', collectionID);
+    this.router.navigate(['my-images']);
   }
 }
