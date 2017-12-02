@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
       alert('Already logged in.');
       this.router.navigate(['home']);
     }
+    // document.getElementById('fname').style.visibility='hidden';
+    // document.getElementById('lname').style.visibility='hidden';
+    // document.getElementById('mail').style.visibility='hidden';
+    // document.getElementById('pword').style.visibility='hidden';
   }
   onLogin(){
     this.email = document.getElementById('email')['value'];
@@ -42,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
   onRegisterResponse(res){
     if(res=="no"){
-      alert("Invalid Password");
+      alert("Invalid");
     }
     else{
       this.first=document.getElementById('fname')['value'];

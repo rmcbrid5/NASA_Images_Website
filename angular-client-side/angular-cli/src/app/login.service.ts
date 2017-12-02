@@ -28,26 +28,29 @@ export class LoginService {
       });
     }
     postData(callback_fun, fn:string, ln:string, e:string, p:string, a:Boolean){
-      var valid : string;
-      valid = "yes";
+      let valid='';
       this.http.get('/api/users').subscribe(data => {
         for(let i=0; i<data.length; i++){
           if(data[i].email==e){
-            alert("Invalid Email");
             valid = "no";
           }
         }
         callback_fun(valid);
-      });
-      if(valid!="no"){
-        let body = {
-          firstName: fn,
-          lastName: ln,
-          email: e,
-          password: p,
-          admin: a
-        };
-        this.http.post('/api/users', body).subscribe();
-      }
+        if(valid=="no"){
+          alert("Invalid Email");
+          return;
+        }
+        if(valid!="no"){
+          let body = {
+            firstName: fn,
+            lastName: ln,
+            email: e,
+            password: p,
+            admin: a
+          };
+          this.http.post('/api/users', body).subscribe();
+        }
+      })
+      
     }
 }
