@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 var Image = require('./app/models/images');
 var Collection = require('./app/models/imageCollection');
 var User = require('./app/models/User');
+var Rating = require('./app/models/rating');
 var port = 8081;
 var router = express.Router();
 router.use(function (req, res, next) {
@@ -85,8 +86,6 @@ router.route('/collections')
         var collection = new Collection();
         collection.name = req.body.name;
         collection.descrip = req.body.descrip;
-        collection.rating = req.body.rating;
-        collection.numOfRatings = req.body.numOfRatings;
         collection.creator = req.body.creator;
         collection.priv = req.body.priv;
         collection.save(function(err){
@@ -109,8 +108,6 @@ router.route('/collections/:collection_id')
                 res.send(err);
             collection.name = req.body.name;
             collection.description = req.body.description;
-            collection.rating = req.body.rating;
-            collection.numOfRatings = req.body.numOfRatings;
             collection.creator = req.body.creator;
             collection.priv = req.body.priv;
             collection.save(function(err){
@@ -170,6 +167,50 @@ router.route('/images/:image_id')
             res.json({message: 'Successfully deleted'});
         });
     });
+router.route('/ratings')
+    .post(function(req, res){
+        var rating = new Rating();
+        rating.collectionID = req.body.collectionID;
+        rating.User = req.body.User;
+        rating.Rating = req.body.Rating;
+        rating.save(function(err){
+            if(err)
+                res.send(err);
+            res.json({message: 'Rating Created!'});
+        });
+    })
+    .get(function(req, res){
+        Rating.find(function(err, ratings){
+            if(err)
+                res.send(err);
+            res.json(ratings);
+        });
+    });
+router.route('/ratings/:rating_id')
+    .put(function(req, res){
+        Rating.findById(req.params.rating_id, function(err, rating){
+            if(err)
+                res.send(err);
+            rating.collectionID = req.body.collectionID;
+            rating.User = req.body.User;
+            rating.Rating = req.body.Rating;
+            rating.save(function(err){
+                if(err)
+                    res.send(err);
+                res.json({message: 'Rating updated!'});
+            });
+        });
+    })
+    .delete(function(req, res){
+        Rating.remove({
+            _id: req.params.rating_id
+        }, function(err, rating){
+            if(err)
+                res.send(err);
+            res.json({message: 'Successfully deleted'});
+        });
+    });
+
 //REGISTER ROUTES
 //=============================================
 app.use('/api', router);

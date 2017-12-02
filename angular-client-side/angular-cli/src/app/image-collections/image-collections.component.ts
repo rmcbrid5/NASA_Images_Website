@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageCollectionService } from '../image-collection.service';
 import { Router } from '@angular/router';
+import { RatingService } from '../rating.service';
 
 @Component({
   selector: 'app-image-collections',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ImageCollectionsComponent implements OnInit {
   collections;
-  constructor(private imageCollectService: ImageCollectionService, private router:Router) { 
+  constructor(private imageCollectService: ImageCollectionService, private router:Router, private ratingService:RatingService) { 
     if(localStorage.getItem('loggedIn')=='false'){
       alert('Please log in to view more image collections');
       this.router.navigate(['login']);
@@ -23,12 +24,18 @@ export class ImageCollectionsComponent implements OnInit {
   }
   ngOnInit() {
   }
-  onRating(ID){
+  onRating(ID, Rating){
+    let rate = document.getElementById(Rating)['value'];
     localStorage.setItem('currentCollectionID', ID);
+    let uID = localStorage.getItem('currentUserID');
+    console.log(rate);
+    this.ratingService.checkData(this.onRatingResponse.bind(this), ID, uID, rate);
   }
   viewCollection(ID){
     localStorage.setItem('currentCollectionID', ID);
     this.router.navigate(['view-images']);
   }
-
+  onRatingResponse(){
+    
+  }
 }

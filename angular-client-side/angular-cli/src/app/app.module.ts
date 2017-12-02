@@ -20,6 +20,7 @@ import { ViewImagesComponent } from './view-images/view-images.component';
 import { ViewImagesService } from './view-images.service';
 import { MyImagesComponent } from './my-images/my-images.component';
 import { MyImagesService } from './my-images.service';
+import { RatingService } from './rating.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService, EditCollectionService, ViewImagesService, MyImagesService],
+  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService, EditCollectionService, ViewImagesService, MyImagesService, RatingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
