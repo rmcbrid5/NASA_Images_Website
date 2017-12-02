@@ -14,6 +14,7 @@ import { MycollectionsComponent } from './mycollections/mycollections.component'
 import { MycollectionsService } from './mycollections.service';
 import { SearchComponent } from './search/search.component';
 import { SearchService } from './search.service';
+import { EditCollectionComponent } from './edit-collection/edit-collection.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ImageCollectionsComponent,
     MycollectionsComponent,
-    SearchComponent
+    SearchComponent,
+    EditCollectionComponent
   ],
   imports: [
     NgxPaginationModule,

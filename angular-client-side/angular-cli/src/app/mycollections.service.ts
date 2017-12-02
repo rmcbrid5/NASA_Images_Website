@@ -11,7 +11,7 @@ export class MycollectionsService {
       for(let i=0; i<data.length; i++){
         if(data[i].creator==localStorage.getItem('currentUserID')){
           console.log(data[i].name);
-          userCollections.push(data[i].name);
+          userCollections.push(data[i]);
         }
       }
       console.log(userCollections);
