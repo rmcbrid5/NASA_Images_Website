@@ -1,6 +1,7 @@
 <h3>Images in Collection</h3>
 <ul>
     <li *ngFor="let ref of refs | paginate: { itemsPerPage: 10, currentPage: p }">
-        <img [src]="ref" style="width: 100px; height: 100px">
+        <img [src]="ref.imageURL" style="width: 100px; height: 100px">
     </li>
 </ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

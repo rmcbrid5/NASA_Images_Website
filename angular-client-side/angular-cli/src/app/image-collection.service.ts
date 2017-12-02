@@ -9,7 +9,7 @@ export class ImageCollectionService {
       this.http.get('/api/collections').subscribe(data => {
         for(let i=0; i<data.length; i++){
           if(data[i].priv==false){
-            publicCollections.push(data[i].name);
+            publicCollections.push(data[i]);
           }
         }
         callback_fun(publicCollections);
