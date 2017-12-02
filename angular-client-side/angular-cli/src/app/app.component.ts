@@ -15,15 +15,15 @@ export class AppComponent{
   constructor(private router:Router)
   {
     this.router.navigate(['home']);
+    console.log(this.status);
   }
   onLogout(){
-    alert(this.status);
     localStorage.setItem('currentUserID', null);
     this.userfName=localStorage.getItem('currentUserID');
     localStorage.setItem('currentUsername', null);
     this.userID = localStorage.getItem('currentUserID');
     localStorage.setItem('loggedIn', 'false');
-    alert("Logged Out" + localStorage.getItem('loggedIn'));
+    alert("Logged Out");
     return false;
   }
 }

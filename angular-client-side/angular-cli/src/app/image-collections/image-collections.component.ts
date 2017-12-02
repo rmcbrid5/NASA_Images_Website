@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 export class ImageCollectionsComponent implements OnInit {
   collections;
   constructor(private imageCollectService: ImageCollectionService, private router:Router) { 
+    if(localStorage.getItem('loggedIn')=='false'){
+      alert('Please log in to view more image collections');
+      this.router.navigate(['login']);
+    }
     this.collections = this.imageCollectService.getData(this.onResponse.bind(this));
   }
   onResponse(res:string){

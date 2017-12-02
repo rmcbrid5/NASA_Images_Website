@@ -11,7 +11,7 @@ export class SearchComponent implements OnInit {
   imageCollects = [];
   constructor(private searchService: SearchService, private router:Router) {
     if(localStorage.getItem('loggedIn')=='false'){
-      alert('Please log in to create and view collections');
+      alert('Please log in to search NASA');
       this.router.navigate(['login']);
     }
     let user = localStorage.getItem('currentUserID');
