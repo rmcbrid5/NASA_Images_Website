@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EditCollectionService } from '../edit-collection.service';
 
 @Component({
   selector: 'app-edit-collection',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-collection.component.css']
 })
 export class EditCollectionComponent implements OnInit {
+  collections;
+  privSetting;
+  nameCollect;
+  descripCollect;
+  userid;
+  constructor(private editCollectionService:EditCollectionService) {
 
-  constructor() { }
+  }
 
   ngOnInit() {
   }
-
+  editCollection(){
+    let collectionID = localStorage.getItem('currentCollectionID');
+    this.privSetting=true;
+    if(document.getElementById('newPriv')['checked']==true){
+      this.privSetting=false;
+    };
+    this.nameCollect=document.getElementById('newName')['value'];
+    this.descripCollect=document.getElementById('newDescription')['value'];
+    this.userid = localStorage.getItem('currentUserID');
+    this.editCollectionService.putData(this.onResponse.bind(this), this.nameCollect, this.descripCollect, this.privSetting, this.userid, collectionID);
+    return false;
+  }
+  deleteCollection(){
+    let collectionID = localStorage.getItem('currentCollectionID');
+    this.editCollectionService.deleteData(this.onResponse.bind(this), collectionID);
+  }
+  onResponse(res){
+    
+  }
 }

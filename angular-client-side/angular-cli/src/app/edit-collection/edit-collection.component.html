@@ -1,3 +1,7 @@
-<p>
-  edit-collection works!
-</p>
+<input type="text" id="newName" placeholder="New Name"><br>
+<input type="text" id="newDescription" placeholder="New Description"><br>
+<input type=checkbox id="newPriv" value="public">
+<label for = "priv">Make Public?</label><br><br>
+<button type="submit" (click)="editCollection()">Make Changes</button>
+<hr>
+<button (click)="deleteCollection()">Delete Collection</button>

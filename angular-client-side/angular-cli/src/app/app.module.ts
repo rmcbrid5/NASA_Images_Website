@@ -15,13 +15,15 @@ import { MycollectionsService } from './mycollections.service';
 import { SearchComponent } from './search/search.component';
 import { SearchService } from './search.service';
 import { EditCollectionComponent } from './edit-collection/edit-collection.component';
+import { EditCollectionService } from './edit-collection.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'image-collections', component: ImageCollectionsComponent },
   { path: 'mycollections', component: MycollectionsComponent },
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'edit-collections', component: EditCollectionComponent }
 ];
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService],
+  providers: [LoginService, ImageCollectionService, MycollectionsService, SearchService, EditCollectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
