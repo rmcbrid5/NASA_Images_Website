@@ -43,5 +43,7 @@ export class MycollectionsComponent implements OnInit {
     localStorage.setItem('currentCollectionID', collectionID);
     this.router.navigate(['edit-collections']);
   }
-  
+  editImages(collectionID){
+    localStorage.setItem('currentCollectionID', collectionID);
+  }
 }
