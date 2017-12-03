@@ -55,6 +55,13 @@ router.route('/users')
         });
     });
 router.route('/users/:user_id')
+    .get(function(req, res){
+        User.findById(req.params.user_id, function(err, users){
+            if(err)
+                res.send(err);
+            res.json(users);
+        });
+    })
     .put(function(req, res){
         User.findById(req.params.user_id, function(err, user){
             if(err)

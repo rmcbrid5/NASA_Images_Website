@@ -12,20 +12,17 @@ export class ImageCollectionService {
             publicCollections.push(data[i]);
           }
         }
-        callback_fun(publicCollections);
-      });
-      return false;
-    }
-    getHomeData(callback_fun){
-      var highestRatings=[];
-      var space = 10;
-      this.http.get('api/ratings').subscribe(data=>{
-        for(var j = 0; j<data.length; j++){
-          if(data[j].Rating == "10"){
-            highestRatings.push(data[j])
+        callback_fun(publicCollections); 
+        var numOfRatings;
+        
+        for(let i=0; i<data.length-1; i++){
+          for(let j=1; j<data.length; j++){
+            if(data[i].collectionID == data[j].collectionID){
+              collectionID=data[i].collectionID;
+              numOfRatings
+            }
           }
         }
       })
-      
     }
 }

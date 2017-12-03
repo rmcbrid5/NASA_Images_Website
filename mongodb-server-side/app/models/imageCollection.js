@@ -5,7 +5,8 @@ var CollectionSchema = new Schema({
     name: String,
     descrip: String,
     creator: Schema.ObjectId,
-    priv: Boolean
+    priv: Boolean,
+    rating: Number
 });
 
 module.exports = mongoose.model('Collection', CollectionSchema);

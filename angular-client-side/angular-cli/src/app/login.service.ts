@@ -4,6 +4,16 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class LoginService {
     constructor(private http:HttpClient) { }
+    getAdmin(callback_fun, ID){
+      let admin='';
+      this.http.get('/api/users/'+ID).subscribe(data=>{
+        alert(data.admin);
+        if(data.admin==true){
+          admin="admin";
+        }
+        callback_fun(admin);
+      })
+    }
     getData(callback_fun, email, password) {
       var log = "out";
       var valid = "yes";
