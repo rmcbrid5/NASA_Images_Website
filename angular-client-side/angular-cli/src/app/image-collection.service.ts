@@ -16,4 +16,16 @@ export class ImageCollectionService {
       });
       return false;
     }
+    getHomeData(callback_fun){
+      var highestRatings=[];
+      var space = 10;
+      this.http.get('api/ratings').subscribe(data=>{
+        for(var j = 0; j<data.length; j++){
+          if(data[j].Rating == "10"){
+            highestRatings.push(data[j])
+          }
+        }
+      })
+      
+    }
 }

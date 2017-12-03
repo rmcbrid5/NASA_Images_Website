@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ImageCollectionService } from '../image-collection.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router:Router) { }
+  collections=[];
+  constructor(private router:Router, private imageCollectionService:ImageCollectionService) { 
+    this.imageCollectionService.getHomeData(this.onResponse.bind(this));
+  }
 
   ngOnInit() {
   }
@@ -18,5 +21,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['login']);
     return false;
   }
-
+  onResponse(res){
+    this.collections=res;
+  }
 }

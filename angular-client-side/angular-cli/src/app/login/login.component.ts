@@ -18,10 +18,6 @@ export class LoginComponent implements OnInit {
       alert('Already logged in.');
       this.router.navigate(['home']);
     }
-    // document.getElementById('fname').style.visibility='hidden';
-    // document.getElementById('lname').style.visibility='hidden';
-    // document.getElementById('mail').style.visibility='hidden';
-    // document.getElementById('pword').style.visibility='hidden';
   }
   onLogin(){
     this.email = document.getElementById('email')['value'];
@@ -29,14 +25,8 @@ export class LoginComponent implements OnInit {
     this.loginservice.getData(this.onResponse.bind(this), this.email, this.password);
     return false;
   }
-  onRegister(){
-    this.first=document.getElementById('fname')['value'];
-    this.last=document.getElementById('lname')['value'];
-    this.email=document.getElementById('mail')['value'];
-    this.password=document.getElementById('pword')['value'];
-    this.admin=false;
-    this.loginservice.postData(this.onRegisterResponse.bind(this), this.first, this.last, this.email, this.password, this.admin);
-    return false;
+  goRegister(){
+    this.router.navigate(['register']);
   }
   ngOnInit() {
   }
@@ -44,17 +34,5 @@ export class LoginComponent implements OnInit {
     this.response = res;
     return false;
   }
-  onRegisterResponse(res){
-    if(res=="no"){
-      alert("Invalid");
-    }
-    else{
-      this.first=document.getElementById('fname')['value'];
-      this.last=document.getElementById('lname')['value'];
-      this.email=document.getElementById('mail')['value'];
-      this.password=document.getElementById('pword')['value'];
-      this.admin=false;
-      
-    }
-  }
+  
 }

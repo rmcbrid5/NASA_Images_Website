@@ -21,6 +21,8 @@ import { ViewImagesService } from './view-images.service';
 import { MyImagesComponent } from './my-images/my-images.component';
 import { MyImagesService } from './my-images.service';
 import { RatingService } from './rating.service';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,7 +32,9 @@ const appRoutes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'edit-collections', component: EditCollectionComponent },
   { path: 'view-images', component: ViewImagesComponent },
-  { path: 'my-images', component: MyImagesComponent }
+  { path: 'my-images', component: MyImagesComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ const appRoutes: Routes = [
     SearchComponent,
     EditCollectionComponent,
     ViewImagesComponent,
-    MyImagesComponent
+    MyImagesComponent,
+    PrivacyComponent,
+    RegisterComponent
   ],
   imports: [
     NgxPaginationModule,

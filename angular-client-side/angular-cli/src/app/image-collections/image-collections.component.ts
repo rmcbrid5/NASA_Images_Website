@@ -26,7 +26,6 @@ export class ImageCollectionsComponent implements OnInit {
   }
   onRating(ID, Rating){
     let rate = document.getElementById(Rating)['value'];
-    localStorage.setItem('currentCollectionID', ID);
     let uID = localStorage.getItem('currentUserID');
     console.log(rate);
     this.ratingService.checkData(this.onRatingResponse.bind(this), ID, uID, rate);
