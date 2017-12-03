@@ -10,7 +10,7 @@ import { ImageCollectionService } from '../image-collection.service';
 export class HomeComponent implements OnInit {
   collections=[];
   constructor(private router:Router, private imageCollectionService:ImageCollectionService) { 
-    this.imageCollectionService.getHomeData(this.onResponse.bind(this));
+    this.imageCollectionService.getData(this.onResponse.bind(this));
   }
 
   ngOnInit() {

@@ -23,6 +23,7 @@ import { MyImagesService } from './my-images.service';
 import { RatingService } from './rating.service';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { RegisterComponent } from './register/register.component';
+import { DmcaComponent } from './dmca/dmca.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   { path: 'view-images', component: ViewImagesComponent },
   { path: 'my-images', component: MyImagesComponent },
   { path: 'privacy', component: PrivacyComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'dmca', component: DmcaComponent }
 ];
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     ViewImagesComponent,
     MyImagesComponent,
     PrivacyComponent,
-    RegisterComponent
+    RegisterComponent,
+    DmcaComponent
   ],
   imports: [
     NgxPaginationModule,

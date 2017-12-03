@@ -13,16 +13,6 @@ export class ImageCollectionService {
           }
         }
         callback_fun(publicCollections); 
-        var numOfRatings;
-        
-        for(let i=0; i<data.length-1; i++){
-          for(let j=1; j<data.length; j++){
-            if(data[i].collectionID == data[j].collectionID){
-              collectionID=data[i].collectionID;
-              numOfRatings
-            }
-          }
-        }
       })
     }
 }

@@ -3,6 +3,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017');
@@ -32,13 +34,14 @@ router.use(function (req, res, next) {
 //ROUTES
 //=============================================
 
-router.route('/users')
+router.route('/users') 
     .post(function(req, res){
+        var salt = bcrypt.genSaltSync(saltRounds);
         var user = new User();
         user.firstName = req.body.firstName;
         user.lastName = req.body.lastName;
         user.email = req.body.email;
-        user.password = req.body.password;
+        user.password = bcrypt.hashSync(req.body.password, salt);
         user.admin = req.body.admin;
         user.save(function(err){
             if(err)
@@ -63,13 +66,14 @@ router.route('/users/:user_id')
         });
     })
     .put(function(req, res){
+        var salt = bcrypt.genSaltSync(saltRounds);
         User.findById(req.params.user_id, function(err, user){
             if(err)
                 res.send(err);
             user.firstName = req.body.firstName;
             user.lastName = req.body.lastName;
             user.email = req.body.email;
-            user.password = req.body.password;
+            user.password = bcrypt.hashSync(req.body.password, salt);
             user.admin = req.body.admin;
             
             user.save(function(err){
