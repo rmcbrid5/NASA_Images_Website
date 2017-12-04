@@ -260,7 +260,7 @@ router.route('/login')
                 //otherwise user entered wrong credentials
                 if(auth==false){
                     res.status(200).json({
-                        message: 'Invalid Login';
+                        message: 'Invalid Login'
                     });
                 }
             }
