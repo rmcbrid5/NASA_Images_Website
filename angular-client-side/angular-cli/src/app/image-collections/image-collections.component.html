@@ -1,6 +1,6 @@
 <h3>Image Collections</h3>
 <ul>
-    <li *ngFor = "let collection of collections">
+    <li *ngFor = "let collection of collections | paginate: { itemsPerPage: 10, currentPage: p }">
         {{collection.name}}
         <select [id]="collection._id">
             <option [value]="1">1</option>
@@ -18,3 +18,4 @@
         <button type="button" (click)="viewCollection(collection._id)">View</button>
     </li>
 </ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
