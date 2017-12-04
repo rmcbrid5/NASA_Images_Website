@@ -239,13 +239,16 @@ router.route('/login')
             else{
                 //now check that the email matches an email in the database, and that the password has a matching bcrypt password
                 for(var i=0; i<users.length; i++){
+                    //if their entered password equals one of the unhashed passwords, then log the user in
                     if(users[i].email==req.body.email&&bcrypt.compareSync(req.body.password, users[0].password)==true){
+                        //send a response saying that the query worked
                         res.status(200).json({
                             message: 'User logged in.',
                             user: users[i]
                         });
                         auth=true;
                     }
+                    //if their entered password equals one of the passwords (before hashing was introduced), let the user login
                     else if(users[i].email==req.body.email&&users[i].password==req.body.password){
                         res.status(200).json({
                             message: 'User logged in.',
@@ -254,9 +257,10 @@ router.route('/login')
                         auth=true;
                     }
                 }
+                //otherwise user entered wrong credentials
                 if(auth==false){
                     res.status(200).json({
-                        message: 'Invalid Login'
+                        message: 'Invalid Login';
                     });
                 }
             }

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  //declare variables that will be needed
   response = '';
   first;
   last;
@@ -19,18 +20,23 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
+  //when user clicks login button
   onLogin(){
+    //get the email and password that the user entered and send them to the loginservice, to then be checked 
     this.email = document.getElementById('email')['value'];
     this.password = document.getElementById('password')['value'];
     this.loginservice.getData(this.onResponse.bind(this), this.email, this.password);
     return false;
   }
+  //when user clicks register button
   goRegister(){
+    //go to the register page
     this.router.navigate(['register']);
   }
   ngOnInit() {
   }
   onResponse(res) {
+    //if the user's login was successful, send them to their collections page
     this.response = res;
     if(res = "in"){
       this.router.navigate(['mycollections']);
