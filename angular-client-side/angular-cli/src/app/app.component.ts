@@ -24,6 +24,7 @@ export class AppComponent{
     this.userID = localStorage.getItem('currentUserID');
     localStorage.setItem('loggedIn', 'false');
     alert("Logged Out");
+    this.router.navigate(['home']);
     return false;
   }
 }

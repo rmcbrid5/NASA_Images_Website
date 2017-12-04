@@ -17,25 +17,44 @@ export class LoginService {
     getData(callback_fun, email, password) {
       var log = "out";
       var valid = "yes";
-      this.http.get('/api/users').subscribe(data => {
-        for(let i=0; i<data.length; i++){
-          if(data[i].email==email && data[i].password==password){
-            alert("Logged In!");
-            localStorage.setItem('currentUsername', data[i].firstName);
-            localStorage.setItem('currentUserID', data[i]._id);
-            localStorage.setItem('loggedIn', 'true');
-            console.log(localStorage.getItem('loggedIn'));
-            log = "in";
-          }
-          if(data[i].email==email){
-            valid="no";
-          }
+      let body ={
+        email: email,
+        password: password
+      }
+      this.http.post('/api/login', body).subscribe(data=>{
+        console.log(data);
+        if(data.message="User logged in."){
+          alert("Logged In!");
+          localStorage.setItem('currentUsername', data.user.firstName);
+          localStorage.setItem('currentUserID', data.user._id);
+          localStorage.setItem('loggedIn', 'true');
+          console.log(localStorage.getItem('loggedIn'));
+          console.log(localStorage.getItem('currentUserID'));
+          console.log(localStorage.getItem('currentUsername'));
         }
-        if(log=="out"){
-          alert("Invalid Login");
+        else{
+          alert('Invalid Login.');
         }
-        callback_fun(valid)
-      });
+      })
+      // this.http.get('/api/users').subscribe(data => {
+      //   for(let i=0; i<data.length; i++){
+      //     if(data[i].email==email && data[i].password==password){
+      //       alert("Logged In!");
+      //       localStorage.setItem('currentUsername', data[i].firstName);
+      //       localStorage.setItem('currentUserID', data[i]._id);
+      //       localStorage.setItem('loggedIn', 'true');
+      //       console.log(localStorage.getItem('loggedIn'));
+      //       log = "in";
+      //     }
+      //     if(data[i].email==email){
+      //       valid="no";
+      //     }
+      //   }
+      //   if(log=="out"){
+      //     alert("Invalid Login");
+      //   }
+      //   callback_fun(log)
+      // });
     }
     postData(callback_fun, fn:string, ln:string, e:string, p:string, a:Boolean){
       let valid='';

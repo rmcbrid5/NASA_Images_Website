@@ -13,7 +13,7 @@ export class EditCollectionComponent implements OnInit {
   nameCollect;
   descripCollect;
   userid;
-  constructor(private editCollectionService:EditCollectionService) {
+  constructor(private editCollectionService:EditCollectionService, private router:Router) {
 
   }
 
@@ -33,7 +33,13 @@ export class EditCollectionComponent implements OnInit {
   }
   deleteCollection(){
     let collectionID = localStorage.getItem('currentCollectionID');
-    this.editCollectionService.deleteData(this.onResponse.bind(this), collectionID);
+    var tf = confirm("Are you sure you want to delete this collection?");
+    if(tf==true){
+      this.editCollectionService.deleteData(this.onResponse.bind(this), collectionID);
+    }
+    else{
+      this.router.navigate(['mycollections']);
+    }
   }
   onResponse(res){
     

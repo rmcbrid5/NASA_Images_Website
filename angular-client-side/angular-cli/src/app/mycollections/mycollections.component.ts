@@ -37,6 +37,7 @@ export class MycollectionsComponent implements OnInit {
     this.userid = localStorage.getItem('currentUserID');
     console.log(this.nameCollect + " " + this.descripCollect + " " + this.privSetting + " " + this.userid);
     this.myCollectService.postData(this.onResponse.bind(this), this.nameCollect, this.descripCollect, this.privSetting, this.userid);
+    this.router.navigate(['mycollections']);
     return false;
   }
   editCollection(collectionID){

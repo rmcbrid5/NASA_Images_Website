@@ -99,6 +99,7 @@ router.route('/collections')
         collection.descrip = req.body.descrip;
         collection.creator = req.body.creator;
         collection.priv = req.body.priv;
+        collection.rating = 0;
         collection.save(function(err){
             if(err)
                 res.send(err);
@@ -121,6 +122,7 @@ router.route('/collections/:collection_id')
             collection.description = req.body.description;
             collection.creator = req.body.creator;
             collection.priv = req.body.priv;
+            collection.rating = 0;
             collection.save(function(err){
                 if(err)
                     res.send(err);
@@ -221,7 +223,45 @@ router.route('/ratings/:rating_id')
             res.json({message: 'Successfully deleted'});
         });
     });
-
+router.route('/login')
+    .post(function(req, res){
+        User.find({email:req.body.email}, function(err, users){
+            var auth = false;
+            //if there is an error, send the error back
+            if(err){
+                res.send(err);
+            }
+            //if no users, notify that the user has entered an invalid email
+            else if(users.length==0){
+                res.status(200).json({message:'Invalid Email.'});
+            }
+            //if no errors and there are users, check if user is authenticated
+            else{
+                //now check that the email matches an email in the database, and that the password has a matching bcrypt password
+                for(var i=0; i<users.length; i++){
+                    if(users[i].email==req.body.email&&bcrypt.compareSync(req.body.password, users[0].password)==true){
+                        res.status(200).json({
+                            message: 'User logged in.',
+                            user: users[i]
+                        });
+                        auth=true;
+                    }
+                    else if(users[i].email==req.body.email&&users[i].password==req.body.password){
+                        res.status(200).json({
+                            message: 'User logged in.',
+                            user: users[i]
+                        });
+                        auth=true;
+                    }
+                }
+                if(auth==false){
+                    res.status(200).json({
+                        message: 'Invalid Login'
+                    });
+                }
+            }
+        });
+    });
 //REGISTER ROUTES
 //=============================================
 app.use('/api', router);

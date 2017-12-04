@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
   }
   onResponse(res) {
     this.response = res;
+    if(res = "in"){
+      this.router.navigate(['mycollections']);
+    }
     return false;
   }
   
