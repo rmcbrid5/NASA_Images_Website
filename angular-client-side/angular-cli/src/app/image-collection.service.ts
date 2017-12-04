@@ -7,12 +7,16 @@ export class ImageCollectionService {
     getData(callback_fun) {
       //declare a list of collections
       var publicCollections=[];
+      //send a get request to the database for the collections
       this.http.get('/api/collections').subscribe(data => {
+        //for all of the collections in the database, check if they are public
         for(let i=0; i<data.length; i++){
           if(data[i].priv==false){
+            //push the public collections to the list created
             publicCollections.push(data[i]);
           }
         }
+        //send the public collections back to the component.ts file
         callback_fun(publicCollections); 
       })
     }
@@ -53,6 +57,7 @@ export class ImageCollectionService {
               ratings.push(0);
             }
           }
+          //send both lists back to the component.ts file
           callback_fun(publicCollections, ratings);
         })
       })
